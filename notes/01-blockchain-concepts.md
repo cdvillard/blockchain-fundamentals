@@ -83,9 +83,11 @@
   - Imagine an algoritm that accepts a number from 1 to 45 as `input`.
   - `Input` is then doubled, and rounds to the nearest 10
 
+
   > Input | Output
   > ---   | ---
   > 3     | 10
   > 4     | 10
   > 5     | 10
   > 9     | 20
+
