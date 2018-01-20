@@ -75,11 +75,17 @@
 - Result is called a hash, similar to a digital fingerprint
 - Hashing is a one-way function, meaning the same result will always be returned by a function given the same input, but the input can never be regenerated based on the output.
 - Example: Simple algorithm
+
   > ```
   > {Output = roundToTen(input x2)}
   > ```
 
-  - Imagine an algoritm that accepts a number from 1 to 45 as input.
-  - 
+  - Imagine an algoritm that accepts a number from 1 to 45 as `input`.
+  - `Input` is then doubled, and rounds to the nearest 10
 
-
+  Input | Output
+  ---   | ---
+  3     | 10
+  4     | 10
+  5     | 10
+  9     | 20
