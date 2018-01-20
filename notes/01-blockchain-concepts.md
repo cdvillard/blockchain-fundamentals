@@ -80,8 +80,8 @@
 > {Output = roundToTen(input x2)}
 > ```
 
-  - Imagine an algoritm that accepts a number from 1 to 45 as `input`.
-  - `Input` is then doubled, and rounds to the nearest 10.
+- Imagine an algoritm that accepts a number from 1 to 45 as `input`.
+- `Input` is then doubled, and rounds to the nearest 10.
 
 > Input | Output
 > ---   | ---
@@ -90,3 +90,34 @@
 > 5     | 10
 > 9     | 20
 
+- Every output length will be two digits, and the algorithm using the same input will always express the same output, but the input can never be derived from it.
+- Obviously, much more advanced algorithms are used in production, and are available to the public.
+- The more advanced the algorithm, the more power it uses.
+- Common and popular algorithm is the SHA-256.
+  - One of several checksum hashing algorithms.
+  - SHA is a family of algorithms, and the number following denotes complexity.
+
+### Common uses for Hashing Algorithms
+
+- Storing passwords
+  - Storing plain-text passwords puts accounts at risk if the database is hacked and the hackers get access to the table storing username and password pairs.
+  - Using algorithms to hash the passwords will force the hacker to compare the passwords with known hash results where the input isn't well known.
+  - This can be done using preexisting lists of common hash results or by generating large lists of hashes with random text strings.
+  - Longer the password, the less likely a hacker can find the input that created that password's hash. Even if they could, they couldn't be 100% sure, so they'd have to test all combinations that led to that hash.
+- Verifying consistency
+  - Because of the consistency and fixed length of a hash result using the same input, hashing algorithms are useful for verifying large amounts of data
+  - Hashing a pre-existing website, and then replacing a character in that website, will result in a different hash result. When compared, it will be obvious whether or not someone has made an alteration to the original or if data has been compromised
+  - The initial data doesn't need to be stored; only the initial hash.
+- Security
+  - Often used in modern security where consistency must be high.
+  - Communication exchanges including timestamps are one such example.
+
+### Merkle Tree
+
+- Hash of hashes
+
+04E9BB80DCFF7690ADEC9429C05DE704210345A2FEC4FE742BBBD0BB4D996CE4
+--- | --- | --- | ---
+7A6D84E49EA9A9BB7A8761DDBA6B59F477783C3583FF4B48CC4124B865A7E9E4 | FA4F42DB3EBDCE907CA1C76AA5F749C1D1DE2EFDE736657DCE87D5E838A8F223
+  BF70552EB765992C6222A8C28B69F8AE8750BBCD0EE4AFED34F0CA6DB091D1D0  |  F223FAA96F22916294922B171A2696D868FD1F9129302EB41A45B2A2EA2EBBFD  |  21D017C40A91C15748F0B98CD826BA445D2D3FE227E310BFD58DCB6C431826A0  |  1F6368E6ECC0AA626F29AC4E81F7D034E5417D0BED2DCA558DDC9BE0ECD9D081
+  "Pear"  |  "Apple"   |   "PC"  |  "MAC"
