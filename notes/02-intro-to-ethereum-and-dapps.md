@@ -107,7 +107,7 @@
 ## Effect of Startgas and Gas Price
 
                     |Startgas               |Gasprice
-----------------------------------------------------------------------
+--------------------|-----------------------|-------------------------
 Too low             |Not sent to miners     |No work done by miners
 Low                 |Out-of-gas Error       |Mined Slower
 Medium              |Ideal                  |Ideal
