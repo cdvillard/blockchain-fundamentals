@@ -104,7 +104,7 @@
       - Ensures no infinite loops will start
     - Optional datafield (Message)
 
-## Effect of Startgas and Gas Price
+## Effect of Startgas and Gasprice
 
 Amount              |Startgas               |Gasprice
 --------------------|-----------------------|-------------------------
@@ -113,3 +113,49 @@ Low                 |Out-of-gas Error       |Mined Slower
 Medium              |Ideal                  |Ideal
 High                |Delay in getting Mined | Mined Faster
 Too High            |Exceed block gas limit |Not sent to miners if sender is out of funds
+
+- Too Low:
+  - Startgas: Transaction will probaby not be sent, and will get an intrinsic gas-too-low
+  - Gasprice: miners will ignore the transaction
+- Low:
+  - Startgas: out-of-gas error, transaction will be rolled back, and all used costs are deducted
+  - Gasprice: potentially mined slower
+- Medium:
+  - Startgas: ideal
+  - Gasprice: ideal
+- High:
+  - Startgas: delays mining under the assumption of a more expensive computation
+  - Gasprice: will likely improve priority
+- Too high:
+  - Startgas: all blocks have a block gas limit, and exceeding it will return an "Exceeds block gas limit error"
+  - Gasprice: If it exceeds available funds, the transaction will not be broadcasted to miners
+
+### Proof of Work vs. Proof of Stake
+
+- Proof of work has been criticized for environmental damage and power consumption associated with mining process
+  - Bitcoin proof of work in mining is said to consume the same amount of power per year as a mid-sized European contry.
+- Proof of stake attempts to solve these problems by removing mining entirely, and replacing it.
+  - The more you put in, the more you can expect to get out.
+
+### Ethereum on Microsoft Azure
+
+- Cloud platform offering application hosting, storage, ID management, and security
+
+#### Ethereum Consortium
+
+- Collaboration between supporting members of a blockchain with underlying infrastructure
+- Example: set of orgs who want to form a privately shared blockchain
+- Starts with consortium leader, setting up configurations, creation of genesis blockchain, and initial allocations of ether to the default account
+  - Ether allocated to a private blockchain cannot be exchanged directly with ether from the public blockchain
+- Once the leader is set up, members can be added with their infrastructure.
+- Membership and allocation of available ether can be controlled.
+
+#### Infrastructure
+
+- Typical setup with default Azure template
+  - User connects to a publicly available server where apps and admin runs
+  - Server makes call to VPN
+  - Call goes to load balancer in VPN that makes a call the transactional nodes
+    - Transactional nodes are separated from mining nodes
+- If a consortium member is added, they'll form their own VPN and tunnel between VPNs
+  - Application can also be hosted on their network as well.

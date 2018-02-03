@@ -1,0 +1,7 @@
+contract HelloWord {
+  string greeting;
+  function Hello() public returns (string) {
+    greeting = "Hello World!";
+    return greeting;
+  }
+}
